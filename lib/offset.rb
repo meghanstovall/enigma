@@ -2,10 +2,7 @@ require 'date'
 
 class Offset
 
-  def self.offset(date)
-    if date == nil
-      date = find_date
-    end
+  def self.create_offset(date = find_date)
     date_squared = (date.to_i * date.to_i)
     date_squared.to_s[-4..-1]
   end
