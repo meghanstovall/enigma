@@ -26,6 +26,15 @@ class EnigmaTest < Minitest::Test
     assert_equal alphabet, @enigma.alphabet
   end
 
+  def test_can_generate_random_num
+    assert_instance_of String, @enigma.key
+    assert_equal 5, @enigma.key.length
+  end
+
+  def test_can_find_current_date
+    assert_equal "110120", @enigma.date
+  end
+
   def test_can_create_offset
     assert_equal "1025", @enigma.create_offset("040895")
   end
