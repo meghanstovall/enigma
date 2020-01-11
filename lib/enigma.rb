@@ -7,7 +7,7 @@ class Enigma
 
   def initialize
     # later on, key will not be arguments
-    # instead: @key = mathable method
+    # instead: @key = Mathable.create_key
     @key = "02715"
     #@date = Mathable.find_date
     @date = "040895"

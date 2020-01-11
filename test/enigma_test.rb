@@ -1,5 +1,6 @@
 require 'minitest/autorun'
 require 'minitest/pride'
+require 'mocha/minitest'
 require './lib/enigma'
 
 
@@ -7,6 +8,7 @@ class EnigmaTest < Minitest::Test
 
   def setup
     @enigma = Enigma.new
+    # @key = @enigma.stubs(:key).returns("02715")
   end
 
   def test_it_exists
