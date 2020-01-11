@@ -14,4 +14,14 @@ class Enigma
   def generate_offset_hash
     {a: @offset[0].to_i, b: @offset[1].to_i, c: @offset[2].to_i, d: @offset[3].to_i}
   end
+
+  def generate_shift_hash
+    key_hash = generate_key_hash
+    offset_hash = generate_offset_hash
+
+    key_hash.reduce({}) do |acc, (letter, number)|
+      acc[letter.upcase] = number + offset_hash[letter]
+      acc
+    end
+  end
 end
