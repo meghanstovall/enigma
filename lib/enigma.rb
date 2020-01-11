@@ -3,7 +3,7 @@ require './lib/offset'
 
 class Enigma
 
-  attr_reader :key, :date, :message
+  attr_reader :key, :date, :alphabet
 
   def initialize
     @key = Key.create_key

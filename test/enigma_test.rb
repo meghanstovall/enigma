@@ -13,11 +13,17 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_it_has_attributes
+    assert_equal "110120", @enigma.date
+
     @enigma.stubs(:key).returns("02715")
     @enigma.stubs(:date).returns("040895")
 
+    alphabet = ("a".."z").to_a
+    alphabet << " "
+    
     assert_equal "02715", @enigma.key
     assert_equal "040895", @enigma.date
+    assert_equal alphabet, @enigma.alphabet
   end
 
   # def test_can_create_offset
