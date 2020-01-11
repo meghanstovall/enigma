@@ -3,7 +3,7 @@ require './lib/offset'
 
 class Enigma
 
-  attr_reader :key, :date, :message
+  attr_reader :key, :date, :alphabet
 
   def initialize
     @key = Key.create_key
@@ -12,21 +12,20 @@ class Enigma
   end
 
   def create_offset(date = @date)
-    Offset.offset(date)
+    Offset.create_offset(date)
   end
 
-  def generate_key_hash
-    {a: @key[0..1].to_i, b: @key[1..2].to_i, c: @key[2..3].to_i, d: @key[3..4].to_i}
+  def generate_key_hash(key = @key)
+    {a: key[0..1].to_i, b: key[1..2].to_i, c: key[2..3].to_i, d: key[3..4].to_i}
   end
 
-  def generate_offset_hash
-    offset = create_offset
+  def generate_offset_hash(offset = create_offset)
     {a: offset[0].to_i, b: offset[1].to_i, c: offset[2].to_i, d: offset[3].to_i}
   end
 
-  def generate_shift_hash
-    key_hash = generate_key_hash
-    offset_hash = generate_offset_hash
+  def generate_shift_hash(key = @key, offset = create_offset)
+    key_hash = generate_key_hash(key)
+    offset_hash = generate_offset_hash(offset)
 
     key_hash.reduce({}) do |acc, (letter, number)|
       acc[letter.upcase] = number + offset_hash[letter]
@@ -35,11 +34,12 @@ class Enigma
   end
 
   def encrypt(message, key = @key, date = @date)
-    {encryption: encrypted_message(message, key, date), key: key, date: date}
+    offset = create_offset(date)
+    {encryption: encrypted_message(message, key, offset), key: key, date: date}
   end
 
-  def encrypted_message(message, key = @kay, offset = create_offset)
-    shift_hash = generate_shift_hash
+  def encrypted_message(message, key = @key, offset = create_offset)
+    shift_hash = generate_shift_hash(key, offset)
 
     message.chars.map.with_index do |letter, index|
       if !@alphabet.include?(letter)
@@ -61,11 +61,12 @@ class Enigma
   end
 
   def decrypt(message, key = @key, date = @date)
-    {decryption: decrypted_message(message, key, date), key: key, date: @date}
+    offset = create_offset(date)
+    {decryption: decrypted_message(message, key, offset), key: key, date: date}
   end
 
-  def decrypted_message(message, key = @kay, offset = create_offset)
-    shift_hash = generate_shift_hash
+  def decrypted_message(message, key = @key, offset = create_offset)
+    shift_hash = generate_shift_hash(key, offset)
 
     message.chars.map.with_index do |letter, index|
       if !@alphabet.include?(letter)
