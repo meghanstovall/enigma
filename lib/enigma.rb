@@ -54,4 +54,26 @@ class Enigma
       end
     end.join
   end
+
+  def decrypt
+    shift_hash = generate_shift_hash
+
+    @message.chars.map.with_index do |letter, index|
+      if !@alphabet.include?(letter)
+        letter
+      elsif index % 4 == 0
+        a = @alphabet.rotate(-shift_hash[:A])
+        a[@alphabet.index(letter)] # before rotate h is at index 7, after rotate k is
+      elsif index % 4 == 1
+        b = @alphabet.rotate(-shift_hash[:B])
+        b[@alphabet.index(letter)]
+      elsif index % 4 == 2
+        c = @alphabet.rotate(-shift_hash[:C])
+        c[@alphabet.index(letter)]
+      elsif index % 4 == 3
+        d = @alphabet.rotate(-shift_hash[:D])
+        d[@alphabet.index(letter)]
+      end
+    end.join
+  end
 end
