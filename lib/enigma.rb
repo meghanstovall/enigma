@@ -5,14 +5,13 @@ class Enigma
 
   attr_reader :key, :date, :message
 
-  def initialize(message)
+  def initialize
     # later on, key will not be arguments
     # instead: @key = mathable method
     @key = "02715"
     #@date = Mathable.find_date
     @date = "040895"
     @alphabet = ("a".."z").to_a << " "
-    @message = message.downcase
   end
 
   def create_offset
@@ -38,14 +37,14 @@ class Enigma
     end
   end
 
-  def encrypted(message, key = @key, date = @date)
+  def encrypt(message, key = @key, date = @date)
     {encryption: encrypted_message(message, key, date), key: key, date: date}
   end
 
   def encrypted_message(message, key = @kay, offset = create_offset)
     shift_hash = generate_shift_hash
 
-    @message.chars.map.with_index do |letter, index|
+    message.chars.map.with_index do |letter, index|
       if !@alphabet.include?(letter)
         letter
       elsif index % 4 == 0
@@ -64,14 +63,14 @@ class Enigma
     end.join
   end
 
-  def decrypted(message, key = @key, date = @date)
+  def decrypt(message, key = @key, date = @date)
     {decryption: decrypted_message(message, key, date), key: key, date: @date}
   end
 
   def decrypted_message(message, key = @kay, offset = create_offset)
     shift_hash = generate_shift_hash
 
-    @message.chars.map.with_index do |letter, index|
+    message.chars.map.with_index do |letter, index|
       if !@alphabet.include?(letter)
         letter
       elsif index % 4 == 0
