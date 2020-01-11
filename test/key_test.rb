@@ -13,5 +13,6 @@ class KeyTest < Minitest::Test
 
   def test_can_generate_random_num
     assert_instance_of String, Key.create_key
+    assert_equal 5, Key.create_key.length
   end
 end

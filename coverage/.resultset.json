@@ -1,15 +1,28 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/meghanstovall/turing/1module/projects/enigma/lib/key.rb": [
+      "/Users/meghanstovall/turing/1module/projects/enigma/lib/offset.rb": [
+        1,
+        null,
         1,
         null,
         1,
         1,
+        1,
+        null,
+        null,
+        1,
+        2,
+        2,
+        2,
+        null,
+        0,
+        null,
+        2,
         null,
         null
       ]
     },
-    "timestamp": 1578768139
+    "timestamp": 1578768671
   }
 }
