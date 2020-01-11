@@ -54,13 +54,15 @@ class EnigmaTest < Minitest::Test
 
   def test_can_encrypt_message
     assert_instance_of String, @enigma.encrypted_message("My name is Meghan")
+    assert_instance_of String, @enigma.encrypted_message("My name is Meghan", "02715")
     assert_equal "keder ohulw!", @enigma.encrypted_message("hello world!", "02715", "1025")
   end
 
-  # def test_can_decrypt_the_message
-  #   assert_equal "hello world!", @enigma.decrypted_message("keder ohulw!")
-  # end
-  #
+  def test_can_decrypt_the_message
+    assert_instance_of String, @enigma.decrypted_message("My name is Meghan")
+    assert_equal "hello world!", @enigma.decrypted_message("keder ohulw!", "02715", "1025")
+  end
+
   # def test_can_create_encrypted_hash
   #   assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715", "040895")
   #   assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715")

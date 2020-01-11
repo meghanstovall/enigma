@@ -63,8 +63,8 @@ class Enigma
     {decryption: decrypted_message(message, key, date), key: key, date: @date}
   end
 
-  def decrypted_message(message, key = @kay, offset = create_offset)
-    shift_hash = generate_shift_hash
+  def decrypted_message(message, key = @key, offset = create_offset)
+    shift_hash = generate_shift_hash(key, offset)
 
     message.chars.map.with_index do |letter, index|
       if !@alphabet.include?(letter)
