@@ -12,7 +12,7 @@ class Enigma
   end
 
   def create_offset(date = @date)
-    Offset.offset(date)
+    Offset.create_offset(date)
   end
 
   def generate_key_hash

@@ -20,15 +20,15 @@ class EnigmaTest < Minitest::Test
 
     alphabet = ("a".."z").to_a
     alphabet << " "
-    
+
     assert_equal "02715", @enigma.key
     assert_equal "040895", @enigma.date
     assert_equal alphabet, @enigma.alphabet
   end
 
-  # def test_can_create_offset
-  #   assert_equal "1025", @enigma.create_offset
-  # end
+  def test_can_create_offset
+    assert_equal "1025", @enigma.create_offset("040895")
+  end
   #
   # def test_it_can_create_key_hash
   #   assert_equal ({a: 02, b: 27, c: 71, d: 15}), @enigma.generate_key_hash
