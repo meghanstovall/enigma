@@ -29,11 +29,13 @@ class EnigmaTest < Minitest::Test
   def test_can_create_offset
     assert_equal "1025", @enigma.create_offset("040895")
   end
-  #
-  # def test_it_can_create_key_hash
-  #   assert_equal ({a: 02, b: 27, c: 71, d: 15}), @enigma.generate_key_hash
-  # end
-  #
+
+  def test_it_can_create_key_hash
+    assert_instance_of Hash, @enigma.generate_key_hash
+    assert_equal 4, @enigma.generate_key_hash.length
+    assert_equal ({a: 02, b: 27, c: 71, d: 15}), @enigma.generate_key_hash("02715")
+  end
+
   # def test_it_can_create_offset_hash
   #   assert_equal ({a: 1, b: 0, c: 2, d: 5}), @enigma.generate_offset_hash
   # end
