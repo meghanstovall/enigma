@@ -1,3 +1,5 @@
+require 'date'
+
 module Mathable
 
   def self.create_key
