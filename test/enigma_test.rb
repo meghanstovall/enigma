@@ -6,7 +6,7 @@ require './lib/enigma'
 class EnigmaTest < Minitest::Test
 
   def setup
-    @enigma = Enigma.new("02715", "1025")
+    @enigma = Enigma.new("02715", "1025", "hello world!")
   end
 
   def test_it_exists
@@ -16,6 +16,7 @@ class EnigmaTest < Minitest::Test
   def test_it_has_attributes
     assert_equal "02715", @enigma.key
     assert_equal "1025", @enigma.offset
+    assert_equal "hello world!", @enigma.message
   end
 
   def test_it_can_create_key_hash
@@ -28,5 +29,9 @@ class EnigmaTest < Minitest::Test
 
   def test_can_create_hash_with_shift_number
     assert_equal ({A: 3, B: 27, C: 73, D: 20}), @enigma.generate_shift_hash
+  end
+
+  def test_can_encrypt_message
+    assert_equal "keder ohulw!", @enigma.encrypt
   end
 end

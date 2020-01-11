@@ -3,11 +3,16 @@ require './lib/mathable'
 class Enigma
   extend Mathable
 
-  attr_reader :key, :offset
+  attr_reader :key, :offset, :message
 
-  def initialize(key, offset)
+  def initialize(key, offset, message)
+    # later on, key and offset will not be arguments
+    # instead: @key = mathable method
+    #          @offset = mathable method
     @key = key
     @offset = offset
+    @alphabet = ("a".."z").to_a << " "
+    @message = message
   end
 
   def generate_key_hash
@@ -26,5 +31,27 @@ class Enigma
       acc[letter.upcase] = number + offset_hash[letter]
       acc
     end
+  end
+
+  def encrypt
+    shift_hash = generate_shift_hash
+
+    @message.chars.map.with_index do |letter, index|
+      if !@alphabet.include?(letter)
+        letter
+      elsif index % 4 == 0
+        a = @alphabet.rotate(shift_hash[:A])
+        a[@alphabet.index(letter)] # before rotate h is at index 7, after rotate k is
+      elsif index % 4 == 1
+        b = @alphabet.rotate(shift_hash[:B])
+        b[@alphabet.index(letter)]
+      elsif index % 4 == 2
+        c = @alphabet.rotate(shift_hash[:C])
+        c[@alphabet.index(letter)]
+      elsif index % 4 == 3
+        d = @alphabet.rotate(shift_hash[:D])
+        d[@alphabet.index(letter)]
+      end
+    end.join
   end
 end
