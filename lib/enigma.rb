@@ -61,7 +61,8 @@ class Enigma
   end
 
   def decrypt(message, key = @key, date = @date)
-    {decryption: decrypted_message(message, key, date), key: key, date: @date}
+    offset = create_offset(date)
+    {decryption: decrypted_message(message, key, offset), key: key, date: date}
   end
 
   def decrypted_message(message, key = @key, offset = create_offset)
