@@ -52,10 +52,11 @@ class EnigmaTest < Minitest::Test
     assert_equal ({A: 3, B: 27, C: 73, D: 20}), @enigma.generate_shift_hash("02715", "1025")
   end
 
-  # def test_can_encrypt_message
-  #   assert_equal "keder ohulw!", @enigma.encrypted_message("hello world!")
-  # end
-  #
+  def test_can_encrypt_message
+    assert_instance_of String, @enigma.encrypted_message("My name is Meghan")
+    assert_equal "keder ohulw!", @enigma.encrypted_message("hello world!", "02715", "1025")
+  end
+
   # def test_can_decrypt_the_message
   #   assert_equal "hello world!", @enigma.decrypted_message("keder ohulw!")
   # end

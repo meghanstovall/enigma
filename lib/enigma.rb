@@ -37,8 +37,8 @@ class Enigma
     {encryption: encrypted_message(message, key, date), key: key, date: date}
   end
 
-  def encrypted_message(message, key = @kay, offset = create_offset)
-    shift_hash = generate_shift_hash
+  def encrypted_message(message, key = @key, offset = create_offset)
+    shift_hash = generate_shift_hash(key, offset)
 
     message.chars.map.with_index do |letter, index|
       if !@alphabet.include?(letter)
