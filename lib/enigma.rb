@@ -33,6 +33,10 @@ class Enigma
     end
   end
 
+  def encrypted(message, key = @key, offset = @offset)
+    {encryption: encrypted_message(message, key, offset), key: key, date: offset}
+  end
+
   def encrypted_message(message, key = @kay, offset = @offset)
     shift_hash = generate_shift_hash
 
@@ -55,7 +59,7 @@ class Enigma
     end.join
   end
 
-  def decrypt
+  def decrypted_message(message, key = @kay, offset = @offset)
     shift_hash = generate_shift_hash
 
     @message.chars.map.with_index do |letter, index|

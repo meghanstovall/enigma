@@ -37,6 +37,10 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_can_decrypt_the_message
-    assert_equal "hello world!", @decrypt.decrypt
+    assert_equal "hello world!", @decrypt.decrypted_message("keder ohulw!")
+  end
+
+  def test_can_create_encrypted_hash
+    assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @encrypt.encrypted("hello worl!")
   end
 end
