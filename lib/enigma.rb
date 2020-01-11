@@ -12,7 +12,7 @@ class Enigma
     @key = key
     @offset = offset
     @alphabet = ("a".."z").to_a << " "
-    @message = message
+    @message = message.downcase
   end
 
   def generate_key_hash
@@ -33,7 +33,7 @@ class Enigma
     end
   end
 
-  def encrypt
+  def encrypted_message(message, key = @kay, offset = @offset)
     shift_hash = generate_shift_hash
 
     @message.chars.map.with_index do |letter, index|

@@ -6,7 +6,7 @@ require './lib/enigma'
 class EnigmaTest < Minitest::Test
 
   def setup
-    @encrypt = Enigma.new("02715", "1025", "hello world!")
+    @encrypt = Enigma.new("02715", "1025", "HEllo world!")
     @decrypt = Enigma.new("02715", "1025", "keder ohulw!")
   end
 
@@ -33,7 +33,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_can_encrypt_message
-    assert_equal "keder ohulw!", @encrypt.encrypt
+    assert_equal "keder ohulw!", @encrypt.encrypted_message("hello world!")
   end
 
   def test_can_decrypt_the_message
