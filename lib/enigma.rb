@@ -11,8 +11,8 @@ class Enigma
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def create_offset
-    Mathable.offset(@date)
+  def create_offset(date = @date)
+    Mathable.offset(date)
   end
 
   def generate_key_hash
