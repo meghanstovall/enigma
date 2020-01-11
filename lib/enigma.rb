@@ -1,4 +1,7 @@
+require './lib/mathable'
+
 class Enigma
+  extend Mathable
 
   attr_reader :key, :offset
 
