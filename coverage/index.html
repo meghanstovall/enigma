@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-01-11T13:33:59-07:00">2020-01-11T13:33:59-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-01-11T13:37:07-07:00">2020-01-11T13:37:07-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         12.5
+         12.72
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>60</td>
         <td>60</td>
         <td>0</td>
-        <td>13.6</td>
+        <td>13.7</td>
       </tr>
       
       <tr>
@@ -67,7 +67,7 @@
         <td>12</td>
         <td>11</td>
         <td>1</td>
-        <td>7.0</td>
+        <td>7.8</td>
       </tr>
       
     </tbody>
@@ -160,20 +160,20 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="11">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="11">
+          <span class="hits">12</span>
           
           <code class="ruby">    @key = Mathable.create_key</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="12">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="12">
+          <span class="hits">12</span>
           
           <code class="ruby">    @date = Mathable.find_date</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="13">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="13">
+          <span class="hits">12</span>
           
           <code class="ruby">    @alphabet = (&quot;a&quot;..&quot;z&quot;).to_a &lt;&lt; &quot; &quot;</code>
         </li>
@@ -683,8 +683,8 @@
           <code class="ruby">  def self.create_key</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="4">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="4">
+          <span class="hits">12</span>
           
           <code class="ruby">    rand.to_s[2..6]</code>
         </li>
@@ -737,20 +737,20 @@
           <code class="ruby">  def self.find_date</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="13">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="13">
+          <span class="hits">12</span>
           
           <code class="ruby">    date = Time.new</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="14">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="14">
+          <span class="hits">12</span>
           
           <code class="ruby">    if date.month.to_s.size &lt; 2</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="15">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="15">
+          <span class="hits">12</span>
           
           <code class="ruby">      month = &quot;0&quot; + date.month.to_s</code>
         </li>
@@ -773,8 +773,8 @@
           <code class="ruby">    end</code>
         </li>
       
-        <li class="covered" data-hits="10" data-linenumber="19">
-          <span class="hits">10</span>
+        <li class="covered" data-hits="12" data-linenumber="19">
+          <span class="hits">12</span>
           
           <code class="ruby">    new_date = (date.day.to_s + month + date.year.to_s)[0,6]</code>
         </li>
