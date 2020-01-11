@@ -1,19 +1,19 @@
 require './lib/key'
+require './lib/offset'
 
 class Enigma
-  # extend Mathable
 
   attr_reader :key, :date, :message
 
   def initialize
     @key = Key.create_key
-    # @date = Mathable.find_date
+    @date = Offset.find_date
     @alphabet = ("a".."z").to_a << " "
   end
 
-  # def create_offset(date = @date)
-  #   Mathable.offset(date)
-  # end
+  def create_offset(date = @date)
+    Offset.offset(date)
+  end
 
   def generate_key_hash
     {a: @key[0..1].to_i, b: @key[1..2].to_i, c: @key[2..3].to_i, d: @key[3..4].to_i}
