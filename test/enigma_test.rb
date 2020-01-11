@@ -63,12 +63,14 @@ class EnigmaTest < Minitest::Test
     assert_equal "hello world!", @enigma.decrypted_message("keder ohulw!", "02715", "1025")
   end
 
-  # def test_can_create_encrypted_hash
-  #   assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715", "040895")
-  #   assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715")
-  #   assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!")
-  # end
-  #
+  def test_can_create_encrypted_hash
+    assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715", "040895")
+
+    # Need to implement stubs for these test?
+    # assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715")
+    # assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!")
+  end
+
   # def test_can_create_decrypted_hash
   #   encrypted = @enigma.encrypt("hello world!", "02715")
   #   message = encrypted[:encryption]

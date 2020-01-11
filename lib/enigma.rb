@@ -34,7 +34,8 @@ class Enigma
   end
 
   def encrypt(message, key = @key, date = @date)
-    {encryption: encrypted_message(message, key, date), key: key, date: date}
+    offset = create_offset(date)
+    {encryption: encrypted_message(message, key, offset), key: key, date: date}
   end
 
   def encrypted_message(message, key = @key, offset = create_offset)
