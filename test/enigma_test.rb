@@ -44,10 +44,14 @@ class EnigmaTest < Minitest::Test
     assert_equal ({a: 1, b: 0, c: 2, d: 5}), @enigma.generate_offset_hash("1025")
   end
 
-  # def test_can_create_hash_with_shift_number
-  #   assert_equal ({A: 3, B: 27, C: 73, D: 20}), @enigma.generate_shift_hash
-  # end
-  #
+  def test_can_create_hash_with_shift_number
+    assert_instance_of Hash, @enigma.generate_shift_hash
+    assert_equal 4, @enigma.generate_shift_hash.length
+    assert_equal [:A, :B, :C, :D], @enigma.generate_shift_hash.keys
+    assert_instance_of Integer, @enigma.generate_shift_hash.values[0]
+    assert_equal ({A: 3, B: 27, C: 73, D: 20}), @enigma.generate_shift_hash("02715", "1025")
+  end
+
   # def test_can_encrypt_message
   #   assert_equal "keder ohulw!", @enigma.encrypted_message("hello world!")
   # end
