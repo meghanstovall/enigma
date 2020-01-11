@@ -6,16 +6,13 @@ class Enigma
   attr_reader :key, :date, :message
 
   def initialize
-    # later on, key will not be arguments
-    # instead: @key = Mathable.create_key
-    @key = "02715"
-    #@date = Mathable.find_date
-    @date = "040895"
+    @key = Mathable.create_key
+    @date = Mathable.find_date
     @alphabet = ("a".."z").to_a << " "
   end
 
   def create_offset
-    Mathable.offset("040895")
+    Mathable.offset(@date)
   end
 
   def generate_key_hash

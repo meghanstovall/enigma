@@ -2,11 +2,14 @@ require 'date'
 
 module Mathable
 
-  def create_key
+  def self.create_key
     rand.to_s[2..6]
   end
 
-  def self.offset(date = find_date)
+  def self.offset(date)
+    if date == nil
+      date = find_date
+    end
     date_squared = (date.to_i * date.to_i)
     date_squared.to_s[-4..-1]
   end
