@@ -59,6 +59,10 @@ class Enigma
     end.join
   end
 
+  def decrypted(message, key = @key, offset = @offset)
+    {decryption: decrypted_message(message, key, offset), key: key, date: offset}
+  end
+
   def decrypted_message(message, key = @kay, offset = @offset)
     shift_hash = generate_shift_hash
 
