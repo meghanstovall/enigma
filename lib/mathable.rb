@@ -6,13 +6,12 @@ module Mathable
     rand.to_s[2..6]
   end
 
-  def create_offset
-    date = find_date.to_i
-    date_squared = (date * date)
+  def self.offset(date = find_date)
+    date_squared = (date.to_i * date.to_i)
     date_squared.to_s[-4..-1]
   end
 
-  def find_date
+  def self.find_date
     date = Time.new
     if date.month.to_s.size < 2
       month = "0" + date.month.to_s

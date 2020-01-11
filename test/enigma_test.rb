@@ -6,8 +6,8 @@ require './lib/enigma'
 class EnigmaTest < Minitest::Test
 
   def setup
-    @encrypt = Enigma.new("02715", "1025", "HEllo world!")
-    @decrypt = Enigma.new("02715", "1025", "keder ohulw!")
+    @encrypt = Enigma.new("HEllo world!")
+    @decrypt = Enigma.new("keder ohulw!")
   end
 
   def test_it_exists
@@ -16,15 +16,19 @@ class EnigmaTest < Minitest::Test
 
   def test_it_has_attributes
     assert_equal "02715", @encrypt.key
-    assert_equal "1025", @encrypt.offset
+    assert_equal "040895", @encrypt.date
     assert_equal "hello world!", @encrypt.message
+  end
+
+  def test_can_create_offset
+    assert_equal "1025", @encrypt.create_offset
   end
 
   def test_it_can_create_key_hash
     assert_equal ({a: 02, b: 27, c: 71, d: 15}), @encrypt.generate_key_hash
   end
 
-  def test_it_can_create_key_hash
+  def test_it_can_create_offset_hash
     assert_equal ({a: 1, b: 0, c: 2, d: 5}), @encrypt.generate_offset_hash
   end
 

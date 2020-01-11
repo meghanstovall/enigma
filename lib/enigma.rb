@@ -3,16 +3,20 @@ require './lib/mathable'
 class Enigma
   extend Mathable
 
-  attr_reader :key, :offset, :message
+  attr_reader :key, :date, :message
 
-  def initialize(key, offset, message)
-    # later on, key and offset will not be arguments
+  def initialize(message)
+    # later on, key will not be arguments
     # instead: @key = mathable method
-    #          @offset = mathable method
-    @key = key
-    @offset = offset
+    @key = "02715"
+    #@date = Mathable.find_date
+    @date = "040895"
     @alphabet = ("a".."z").to_a << " "
     @message = message.downcase
+  end
+
+  def create_offset
+    Mathable.offset("040895")
   end
 
   def generate_key_hash
@@ -20,7 +24,8 @@ class Enigma
   end
 
   def generate_offset_hash
-    {a: @offset[0].to_i, b: @offset[1].to_i, c: @offset[2].to_i, d: @offset[3].to_i}
+    offset = create_offset
+    {a: offset[0].to_i, b: offset[1].to_i, c: offset[2].to_i, d: offset[3].to_i}
   end
 
   def generate_shift_hash
@@ -33,11 +38,11 @@ class Enigma
     end
   end
 
-  def encrypted(message, key = @key, offset = @offset)
-    {encryption: encrypted_message(message, key, offset), key: key, date: offset}
+  def encrypted(message, key = @key, date = @date)
+    {encryption: encrypted_message(message, key, date), key: key, date: date}
   end
 
-  def encrypted_message(message, key = @kay, offset = @offset)
+  def encrypted_message(message, key = @kay, offset = create_offset)
     shift_hash = generate_shift_hash
 
     @message.chars.map.with_index do |letter, index|
@@ -59,11 +64,11 @@ class Enigma
     end.join
   end
 
-  def decrypted(message, key = @key, offset = @offset)
-    {decryption: decrypted_message(message, key, offset), key: key, date: offset}
+  def decrypted(message, key = @key, date = @date)
+    {decryption: decrypted_message(message, key, date), key: key, date: @date}
   end
 
-  def decrypted_message(message, key = @kay, offset = @offset)
+  def decrypted_message(message, key = @kay, offset = create_offset)
     shift_hash = generate_shift_hash
 
     @message.chars.map.with_index do |letter, index|
