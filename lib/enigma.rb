@@ -1,18 +1,18 @@
-require './lib/mathable'
+require './lib/key'
+require './lib/offset'
 
 class Enigma
-  extend Mathable
 
   attr_reader :key, :date, :message
 
   def initialize
-    @key = Mathable.create_key
-    @date = Mathable.find_date
+    @key = Key.create_key
+    @date = Offset.find_date
     @alphabet = ("a".."z").to_a << " "
   end
 
-  def create_offset
-    Mathable.offset(@date)
+  def create_offset(date = @date)
+    Offset.offset(date)
   end
 
   def generate_key_hash

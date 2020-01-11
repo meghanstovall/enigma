@@ -24,7 +24,6 @@ class EnigmaTest < Minitest::Test
   end
 
   # def test_can_create_offset
-  #   @enigma.stubs(:date).returns("040895")
   #   assert_equal "1025", @enigma.create_offset
   # end
   #
