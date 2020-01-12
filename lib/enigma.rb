@@ -1,5 +1,3 @@
-# require './lib/key'
-# require './lib/offset'
 require './lib/mathable'
 
 class Enigma
