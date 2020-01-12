@@ -45,20 +45,17 @@ class Enigma
       if !@alphabet.include?(letter)
         letter
       elsif index % 4 == 0
-        a = @alphabet.rotate(shift_hash[:A])
-        a[@alphabet.index(letter)] # before rotate h is at index 7, after rotate k is
+        shift(shift_hash[:A], letter)
       elsif index % 4 == 1
-        b = @alphabet.rotate(shift_hash[:B])
-        b[@alphabet.index(letter)]
+        shift(shift_hash[:B], letter)
       elsif index % 4 == 2
-        c = @alphabet.rotate(shift_hash[:C])
-        c[@alphabet.index(letter)]
+        shift(shift_hash[:C], letter)
       elsif index % 4 == 3
-        d = @alphabet.rotate(shift_hash[:D])
-        d[@alphabet.index(letter)]
+        shift(shift_hash[:D], letter)
       end
     end.join
   end
+
 
   def decrypt(message, key = @key, date = @date)
     offset = create_offset(date)
@@ -72,19 +69,20 @@ class Enigma
       if !@alphabet.include?(letter)
         letter
       elsif index % 4 == 0
-        a = @alphabet.rotate(-shift_hash[:A])
-        a[@alphabet.index(letter)] # before rotate h is at index 7, after rotate k is
+        shift(-shift_hash[:A], letter)
       elsif index % 4 == 1
-        b = @alphabet.rotate(-shift_hash[:B])
-        b[@alphabet.index(letter)]
+        shift(-shift_hash[:B], letter)
       elsif index % 4 == 2
-        c = @alphabet.rotate(-shift_hash[:C])
-        c[@alphabet.index(letter)]
+        shift(-shift_hash[:C], letter)
       elsif index % 4 == 3
-        d = @alphabet.rotate(-shift_hash[:D])
-        d[@alphabet.index(letter)]
+        shift(-shift_hash[:D], letter)
       end
     end.join
+  end
+
+  def shift(rotate_by, letter)
+    rotated_alphabet = @alphabet.rotate(rotate_by)
+    rotated_alphabet[@alphabet.index(letter)] # before rotate h is at index 7, after rotate k is
   end
 
   def crack(message, date = @date)

@@ -80,19 +80,19 @@ class EnigmaTest < Minitest::Test
     # assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!")
   end
 
-  def test_can_create_decrypted_hash
-    encrypted = @enigma.encrypt("hello world!", "02715", "040895")
-    message = encrypted[:encryption]
-
-    assert_equal ({decryption: "hello world!", key: "02715", date: "040895"}), @enigma.decrypt(message, "02715", "040895")
-    # assert_equal ({decryption: "hello world!", key: "02715", date: "040895"}), @enigma.decrypt(message, "02715")
-  end
-
-  def test_can_crack_a_message
-    expected = {encryption: "keder ohulwthnw", key: "02715", date: "040895"}
-    assert_equal expected, @enigma.encrypt("hello world end", "02715", "040895")
-
-    expected2 = {decryption: "hello world end", date: "040895", key: "02715"}
-    assert_equal expected2, @enigma.crack("keder ohulwthnw", "040895")
-  end
+  # def test_can_create_decrypted_hash
+  #   encrypted = @enigma.encrypt("hello world!", "02715", "040895")
+  #   message = encrypted[:encryption]
+  #
+  #   assert_equal ({decryption: "hello world!", key: "02715", date: "040895"}), @enigma.decrypt(message, "02715", "040895")
+  #   # assert_equal ({decryption: "hello world!", key: "02715", date: "040895"}), @enigma.decrypt(message, "02715")
+  # end
+  #
+  # def test_can_crack_a_message
+  #   expected = {encryption: "keder ohulwthnw", key: "02715", date: "040895"}
+  #   assert_equal expected, @enigma.encrypt("hello world end", "02715", "040895")
+  #
+  #   expected2 = {decryption: "hello world end", date: "040895", key: "02715"}
+  #   assert_equal expected2, @enigma.crack("keder ohulwthnw", "040895")
+  # end
 end
