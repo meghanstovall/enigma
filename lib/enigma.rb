@@ -86,4 +86,32 @@ class Enigma
       end
     end.join
   end
+
+  def crack(message, date = @date)
+    cracked(message, date)
+  end
+
+  def cracked(message, date = @date)
+    reverse_message = message.split("").reverse()
+
+    reverse_message.map.with_index do |letter, index|
+      if index % 4 == 0
+        rotate_by = letter.ord - 100
+        a = @alphabet.rotate(-rotate_by)
+        a[@alphabet.index(letter)]
+      elsif index % 4 == 1
+        rotate_by = letter.ord - 110
+        b = @alphabet.rotate(-rotate_by)
+        b[@alphabet.index(letter)]
+      elsif index % 4 == 2
+        rotate_by = letter.ord - 101
+        c = @alphabet.rotate(-rotate_by)
+        c[@alphabet.index(letter)]
+      elsif index % 4 == 3
+        rotate_by = letter.ord - 32
+        d = @alphabet.rotate(-rotate_by)
+        d[@alphabet.index(letter)]
+      end
+    end.reverse.join
+  end
 end
