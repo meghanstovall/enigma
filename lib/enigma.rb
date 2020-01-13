@@ -91,19 +91,19 @@ class Enigma
     {decryption: cracked_message(message, date), date: date, key: key}
   end
 
-  def cracked_message(message, date = @date)
-    reverse_message = message.split("").reverse()
-
-    reverse_message.map.with_index do |letter, index|
-      if index % 4 == 0
-        shift(-19, letter)
-      elsif index % 4 == 1
-        shift(-27, letter)
-      elsif index % 4 == 2
-        shift(-3, letter)
-      elsif index % 4 == 3
-        shift(-20, letter)
-      end
-    end.reverse.join
-  end
+  # def cracked_message(message, date = @date)
+  #   reverse_message = message.split("").reverse()
+  #
+  #   reverse_message.map.with_index do |letter, index|
+  #     if index % 4 == 0
+  #       shift(-19, letter)
+  #     elsif index % 4 == 1
+  #       shift(-27, letter)
+  #     elsif index % 4 == 2
+  #       shift(-3, letter)
+  #     elsif index % 4 == 3
+  #       shift(-20, letter)
+  #     end
+  #   end.reverse.join
+  # end
 end
