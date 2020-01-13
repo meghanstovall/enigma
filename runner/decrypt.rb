@@ -8,7 +8,7 @@ file = File.open(ARGV[0], "r")
 message = file.read
 file.close
 
-decrypt = enigma.decrypt(message)
+decrypt = enigma.decrypt(message, ARGV[2], ARGV[3])
 
 # ARGV is an array that contains the values
 # passed by the command line

@@ -86,29 +86,23 @@ class Enigma
   end
 
   def crack(message, date = @date)
-    cracked(message, date)
+    #create method to find the key
+    #key = find_key
+    {decryption: cracked_message(message, date), date: date, key: key}
   end
 
-  def cracked(message, date = @date)
+  def cracked_message(message, date = @date)
     reverse_message = message.split("").reverse()
 
     reverse_message.map.with_index do |letter, index|
       if index % 4 == 0
-        rotate_by = letter.ord - 100
-        a = @alphabet.rotate(-rotate_by)
-        a[@alphabet.index(letter)]
+        shift(-19, letter)
       elsif index % 4 == 1
-        rotate_by = letter.ord - 110
-        b = @alphabet.rotate(-rotate_by)
-        b[@alphabet.index(letter)]
+        shift(-27, letter)
       elsif index % 4 == 2
-        rotate_by = letter.ord - 101
-        c = @alphabet.rotate(-rotate_by)
-        c[@alphabet.index(letter)]
+        shift(-3, letter)
       elsif index % 4 == 3
-        rotate_by = letter.ord - 32
-        d = @alphabet.rotate(-rotate_by)
-        d[@alphabet.index(letter)]
+        shift(-20, letter)
       end
     end.reverse.join
   end
