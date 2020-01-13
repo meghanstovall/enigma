@@ -12,30 +12,25 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, @enigma
   end
 
-  # def test_it_has_attributes
-  #   assert_equal "110120", @enigma.date
-  #
-  #   @enigma.stubs(:key).returns("02715")
-  #   @enigma.stubs(:date).returns("040895")
-  #
-  #   alphabet = ("a".."z").to_a
-  #   alphabet << " "
-  #
-  #   assert_equal "02715", @enigma.key
-  #   assert_equal "040895", @enigma.date
-  #   assert_equal alphabet, @enigma.alphabet
-  # end
+  def test_has_alphabet_array
+    alphabet = ("a".."z").to_a
+    alphabet << " "
+
+    assert_equal alphabet, @enigma.alphabet
+    assert_equal "a", @enigma.alphabet[0]
+    assert_equal " ", @enigma.alphabet[-1]
+  end
 
   def test_can_generate_random_num
     assert_instance_of String, @enigma.key
     assert_equal 5, @enigma.key.length
   end
 
-  # def test_can_get_date_with_double_digit_month
-  #   @enigma.stubs(:find_date).returns("131220")
-  #
-  #   assert_equal "131220", @enigma.date
-  # end
+  def test_can_get_date
+    @enigma.stubs(:find_date).returns("131220")
+
+    assert_equal "131220", @enigma.date
+  end
 
   def test_can_create_offset
     assert_equal "1025", @enigma.create_offset("040895")
@@ -44,6 +39,8 @@ class EnigmaTest < Minitest::Test
   def test_it_can_create_key_hash
     assert_instance_of Hash, @enigma.generate_key_hash
     assert_equal 4, @enigma.generate_key_hash.length
+    assert_equal [:a, :b, :c, :d], @enigma.generate_key_hash.keys
+    assert_instance_of Integer, @enigma.generate_offset_hash.values[0]
     assert_equal ({a: 02, b: 27, c: 71, d: 15}), @enigma.generate_key_hash("02715")
   end
 
