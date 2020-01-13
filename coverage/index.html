@@ -14,27 +14,27 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-01-13T12:26:37-07:00">2020-01-13T12:26:37-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-01-13T12:38:29-07:00">2020-01-13T12:38:29-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="green">97.14%</span></span>
+    (<span class="covered_percent"><span class="green">100.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         14.47
+         15.21
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>2</b> files in total.
-    <b>70</b> relevant lines. 
-    <span class="green"><b>68</b> lines covered</span> and
-    <span class="red"><b>2</b> lines missed </span>
+    <b>64</b> relevant lines. 
+    <span class="green"><b>64</b> lines covered</span> and
+    <span class="red"><b>0</b> lines missed </span>
   </div>
   <table class="file_list">
     <thead>
@@ -52,22 +52,22 @@
       
       <tr>
         <td class="strong"><a href="#47624acba41c2e9a49352e10f39756fba2dceb87" class="src_link" title="lib/enigma.rb">lib/enigma.rb</a></td>
-        <td class="green strong">98.25 %</td>
+        <td class="green strong">100.0 %</td>
         <td>109</td>
-        <td>57</td>
-        <td>56</td>
-        <td>1</td>
-        <td>16.2</td>
+        <td>55</td>
+        <td>55</td>
+        <td>0</td>
+        <td>16.7</td>
       </tr>
       
       <tr>
         <td class="strong"><a href="#d3fe9f0b87aac4531616bb4d912beb5256dce1f1" class="src_link" title="lib/mathable.rb">lib/mathable.rb</a></td>
-        <td class="green strong">92.31 %</td>
-        <td>23</td>
-        <td>13</td>
-        <td>12</td>
-        <td>1</td>
-        <td>6.9</td>
+        <td class="green strong">100.0 %</td>
+        <td>17</td>
+        <td>9</td>
+        <td>9</td>
+        <td>0</td>
+        <td>6.1</td>
       </tr>
       
     </tbody>
@@ -89,11 +89,11 @@
         <div class="source_table" id="47624acba41c2e9a49352e10f39756fba2dceb87">
   <div class="header">
     <h3>lib/enigma.rb</h3>
-    <h4><span class="green">98.25 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>57</b> relevant lines. 
-      <span class="green"><b>56</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>55</b> relevant lines. 
+      <span class="green"><b>55</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -148,20 +148,20 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="9">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="9">
+          <span class="hits">10</span>
           
           <code class="ruby">    @key = Mathable.create_key</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="10">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="10">
+          <span class="hits">10</span>
           
           <code class="ruby">    @date = Mathable.find_date</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="11">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="11">
+          <span class="hits">10</span>
           
           <code class="ruby">    @alphabet = (&quot;a&quot;..&quot;z&quot;).to_a &lt;&lt; &quot; &quot;</code>
         </li>
@@ -622,40 +622,40 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="1" data-linenumber="88">
-          <span class="hits">1</span>
+        <li class="never" data-hits="" data-linenumber="88">
           
-          <code class="ruby">  def crack(message, date = @date)</code>
+          
+          <code class="ruby">  # def crack(message, date = @date)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="89">
           
           
-          <code class="ruby">    #create method to find the key</code>
+          <code class="ruby">  #   #create method to find the key</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="90">
           
           
-          <code class="ruby">    #key = find_key</code>
+          <code class="ruby">  #   #key = find_key</code>
         </li>
       
-        <li class="missed" data-hits="0" data-linenumber="91">
+        <li class="never" data-hits="" data-linenumber="91">
           
           
-          <code class="ruby">    {decryption: cracked_message(message, date), date: date, key: key}</code>
+          <code class="ruby">  #   {decryption: cracked_message(message, date), date: date, key: key}</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="92">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">  # end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="93">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">  #</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="94">
@@ -762,11 +762,11 @@
         <div class="source_table" id="d3fe9f0b87aac4531616bb4d912beb5256dce1f1">
   <div class="header">
     <h3>lib/mathable.rb</h3>
-    <h4><span class="green">92.31 %</span> covered</h4>
+    <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>13</b> relevant lines. 
-      <span class="green"><b>12</b> lines covered</span> and
-      <span class="red"><b>1</b> lines missed.</span>
+      <b>9</b> relevant lines. 
+      <span class="green"><b>9</b> lines covered</span> and
+      <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
   
@@ -803,8 +803,8 @@
           <code class="ruby">  def self.create_key</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="6">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="6">
+          <span class="hits">10</span>
           
           <code class="ruby">    rand.to_s[2..6]</code>
         </li>
@@ -857,55 +857,19 @@
           <code class="ruby">  def self.find_date</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="15">
-          <span class="hits">11</span>
+        <li class="covered" data-hits="10" data-linenumber="15">
+          <span class="hits">10</span>
           
-          <code class="ruby">    date = Time.new</code>
+          <code class="ruby">    date = Time.now.strftime(&quot;%d%m%y&quot;)</code>
         </li>
       
-        <li class="covered" data-hits="11" data-linenumber="16">
-          <span class="hits">11</span>
-          
-          <code class="ruby">    if date.month.to_s.size &lt; 2</code>
-        </li>
-      
-        <li class="covered" data-hits="11" data-linenumber="17">
-          <span class="hits">11</span>
-          
-          <code class="ruby">      month = &quot;0&quot; + date.month.to_s</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="18">
-          
-          
-          <code class="ruby">    else</code>
-        </li>
-      
-        <li class="missed" data-hits="0" data-linenumber="19">
-          
-          
-          <code class="ruby">      month = date.month.to_s</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="20">
-          
-          
-          <code class="ruby">    end</code>
-        </li>
-      
-        <li class="covered" data-hits="11" data-linenumber="21">
-          <span class="hits">11</span>
-          
-          <code class="ruby">    new_date = (date.day.to_s + month + date.year.to_s)[0,6]</code>
-        </li>
-      
-        <li class="never" data-hits="" data-linenumber="22">
+        <li class="never" data-hits="" data-linenumber="16">
           
           
           <code class="ruby">  end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="23">
+        <li class="never" data-hits="" data-linenumber="17">
           
           
           <code class="ruby">end</code>

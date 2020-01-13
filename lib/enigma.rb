@@ -85,12 +85,12 @@ class Enigma
     rotated_alphabet[@alphabet.index(letter)] # before rotate h is at index 7, after rotate k is
   end
 
-  def crack(message, date = @date)
-    #create method to find the key
-    #key = find_key
-    {decryption: cracked_message(message, date), date: date, key: key}
-  end
-
+  # def crack(message, date = @date)
+  #   #create method to find the key
+  #   #key = find_key
+  #   {decryption: cracked_message(message, date), date: date, key: key}
+  # end
+  #
   # def cracked_message(message, date = @date)
   #   reverse_message = message.split("").reverse()
   #
