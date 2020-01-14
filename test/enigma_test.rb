@@ -12,28 +12,23 @@ class EnigmaTest < Minitest::Test
     assert_instance_of Enigma, @enigma
   end
 
-  # def test_it_has_attributes
-  #   assert_equal "110120", @enigma.date
-  #
-  #   @enigma.stubs(:key).returns("02715")
-  #   @enigma.stubs(:date).returns("040895")
-  #
-  #   alphabet = ("a".."z").to_a
-  #   alphabet << " "
-  #
-  #   assert_equal "02715", @enigma.key
-  #   assert_equal "040895", @enigma.date
-  #   assert_equal alphabet, @enigma.alphabet
-  # end
+  def test_has_alphabet_array
+    alphabet = ("a".."z").to_a
+    alphabet << " "
+
+    assert_equal alphabet, @enigma.alphabet
+    assert_equal "a", @enigma.alphabet[0]
+    assert_equal " ", @enigma.alphabet[-1]
+  end
 
   def test_can_generate_random_num
     assert_instance_of String, @enigma.key
     assert_equal 5, @enigma.key.length
   end
 
-  # def test_can_find_current_date
-  #   assert_equal "110120", @enigma.date
-  # end
+  def test_can_get_the_date
+    assert_equal "140120", @enigma.date
+  end
 
   def test_can_create_offset
     assert_equal "1025", @enigma.create_offset("040895")
@@ -42,6 +37,8 @@ class EnigmaTest < Minitest::Test
   def test_it_can_create_key_hash
     assert_instance_of Hash, @enigma.generate_key_hash
     assert_equal 4, @enigma.generate_key_hash.length
+    assert_equal [:a, :b, :c, :d], @enigma.generate_key_hash.keys
+    assert_instance_of Integer, @enigma.generate_offset_hash.values[0]
     assert_equal ({a: 02, b: 27, c: 71, d: 15}), @enigma.generate_key_hash("02715")
   end
 
@@ -53,7 +50,7 @@ class EnigmaTest < Minitest::Test
     assert_equal ({a: 1, b: 0, c: 2, d: 5}), @enigma.generate_offset_hash("1025")
   end
 
-  def test_can_create_hash_with_shift_number
+  def test_can_create_hash_with_shift_numbers
     assert_instance_of Hash, @enigma.generate_shift_hash
     assert_equal 4, @enigma.generate_shift_hash.length
     assert_equal [:A, :B, :C, :D], @enigma.generate_shift_hash.keys
@@ -69,15 +66,12 @@ class EnigmaTest < Minitest::Test
 
   def test_can_decrypt_the_message
     assert_instance_of String, @enigma.decrypted_message("My name is Meghan")
+    assert_instance_of String, @enigma.decrypted_message("My name is Meghan", "02715")
     assert_equal "hello world!", @enigma.decrypted_message("keder ohulw!", "02715", "1025")
   end
 
   def test_can_create_encrypted_hash
     assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715", "040895")
-
-    # Need to implement stubs for these test?
-    # assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!", "02715")
-    # assert_equal ({encryption: "keder ohulw!", key: "02715", date: "040895"}), @enigma.encrypt("hello world!")
   end
 
   def test_can_create_decrypted_hash
@@ -85,14 +79,26 @@ class EnigmaTest < Minitest::Test
     message = encrypted[:encryption]
 
     assert_equal ({decryption: "hello world!", key: "02715", date: "040895"}), @enigma.decrypt(message, "02715", "040895")
-    # assert_equal ({decryption: "hello world!", key: "02715", date: "040895"}), @enigma.decrypt(message, "02715")
+
+    encrypted = @enigma.encrypt("hello world!", "02715")
+    message = encrypted[:encryption]
+    date = encrypted[:date]
+
+    assert_equal ({decryption: "hello world!", key: "02715", date: date}), @enigma.decrypt(message, "02715")
+
+    encrypted = @enigma.encrypt("hello world!")
+    message = encrypted[:encryption]
+    date = encrypted[:date]
+    key = encrypted[:key]
+
+    assert_equal ({decryption: "hello world!", key: key, date: date}), @enigma.decrypt(message)
   end
 
-  def test_can_crack_a_message
-    expected = {encryption: "keder ohulwthnw", key: "02715", date: "040895"}
-    assert_equal expected, @enigma.encrypt("hello world end", "02715", "040895")
-
-    expected2 = {decryption: "hello world end", date: "040895", key: "02715"}
-    assert_equal expected2, @enigma.crack("keder ohulwthnw", "040895")
-  end
+  # def test_can_crack_a_message
+  #   expected = {encryption: "keder ohulwthnw", key: "02715", date: "040895"}
+  #   assert_equal expected, @enigma.encrypt("hello world end", "02715", "040895")
+  #
+  #   expected2 = {decryption: "hello world end", date: "040895", key: "02715"}
+  #   assert_equal expected2, @enigma.crack("keder ohulwthnw", "040895")
+  # end
 end
