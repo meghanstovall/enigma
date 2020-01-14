@@ -14,7 +14,7 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2020-01-14T08:50:20-07:00">2020-01-14T08:50:20-07:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2020-01-14T10:34:54-07:00">2020-01-14T10:34:54-07:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
@@ -25,7 +25,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         23.03
+         28.74
        </span>
     </span> hits/line)
   </h2>
@@ -57,7 +57,7 @@
         <td>55</td>
         <td>55</td>
         <td>0</td>
-        <td>25.5</td>
+        <td>32.0</td>
       </tr>
       
       <tr>
@@ -67,7 +67,7 @@
         <td>9</td>
         <td>9</td>
         <td>0</td>
-        <td>7.9</td>
+        <td>8.8</td>
       </tr>
       
     </tbody>
@@ -148,20 +148,20 @@
           <code class="ruby">  def initialize</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="9">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="14" data-linenumber="9">
+          <span class="hits">14</span>
           
           <code class="ruby">    @key = Mathable.create_key</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="10">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="14" data-linenumber="10">
+          <span class="hits">14</span>
           
           <code class="ruby">    @date = Mathable.find_date</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="11">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="14" data-linenumber="11">
+          <span class="hits">14</span>
           
           <code class="ruby">    @alphabet = (&quot;a&quot;..&quot;z&quot;).to_a &lt;&lt; &quot; &quot;</code>
         </li>
@@ -184,8 +184,8 @@
           <code class="ruby">  def create_offset(date = @date)</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="15">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="23" data-linenumber="15">
+          <span class="hits">23</span>
           
           <code class="ruby">    Mathable.create_offset(date)</code>
         </li>
@@ -208,8 +208,8 @@
           <code class="ruby">  def generate_key_hash(key = @key)</code>
         </li>
       
-        <li class="covered" data-hits="22" data-linenumber="19">
-          <span class="hits">22</span>
+        <li class="covered" data-hits="26" data-linenumber="19">
+          <span class="hits">26</span>
           
           <code class="ruby">    {a: key[0..1].to_i, b: key[1..2].to_i, c: key[2..3].to_i, d: key[3..4].to_i}</code>
         </li>
@@ -232,8 +232,8 @@
           <code class="ruby">  def generate_offset_hash(offset = create_offset)</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="23">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="28" data-linenumber="23">
+          <span class="hits">28</span>
           
           <code class="ruby">    {a: offset[0].to_i, b: offset[1].to_i, c: offset[2].to_i, d: offset[3].to_i}</code>
         </li>
@@ -256,14 +256,14 @@
           <code class="ruby">  def generate_shift_hash(key = @key, offset = create_offset)</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="27">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="22" data-linenumber="27">
+          <span class="hits">22</span>
           
           <code class="ruby">    key_hash = generate_key_hash(key)</code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="28">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="22" data-linenumber="28">
+          <span class="hits">22</span>
           
           <code class="ruby">    offset_hash = generate_offset_hash(offset)</code>
         </li>
@@ -274,20 +274,20 @@
           <code class="ruby"></code>
         </li>
       
-        <li class="covered" data-hits="18" data-linenumber="30">
-          <span class="hits">18</span>
+        <li class="covered" data-hits="22" data-linenumber="30">
+          <span class="hits">22</span>
           
           <code class="ruby">    key_hash.reduce({}) do |acc, (letter, number)|</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="31">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="88" data-linenumber="31">
+          <span class="hits">88</span>
           
           <code class="ruby">      acc[letter.upcase] = number + offset_hash[letter]</code>
         </li>
       
-        <li class="covered" data-hits="72" data-linenumber="32">
-          <span class="hits">72</span>
+        <li class="covered" data-hits="88" data-linenumber="32">
+          <span class="hits">88</span>
           
           <code class="ruby">      acc</code>
         </li>
@@ -346,8 +346,8 @@
           <code class="ruby">  def encrypted_message(message, key = @key, offset = create_offset)</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="42">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="9" data-linenumber="42">
+          <span class="hits">9</span>
           
           <code class="ruby">    shift_hash = generate_shift_hash(key, offset)</code>
         </li>
@@ -364,62 +364,62 @@
           <code class="ruby">    message.chars.map.with_index do |letter, index|</code>
         </li>
       
-        <li class="covered" data-hits="94" data-linenumber="45">
-          <span class="hits">94</span>
+        <li class="covered" data-hits="118" data-linenumber="45">
+          <span class="hits">118</span>
           
           <code class="ruby">      if !@alphabet.include?(letter)</code>
         </li>
       
-        <li class="covered" data-hits="9" data-linenumber="46">
-          <span class="hits">9</span>
+        <li class="covered" data-hits="11" data-linenumber="46">
+          <span class="hits">11</span>
           
           <code class="ruby">        letter</code>
         </li>
       
-        <li class="covered" data-hits="85" data-linenumber="47">
-          <span class="hits">85</span>
+        <li class="covered" data-hits="107" data-linenumber="47">
+          <span class="hits">107</span>
           
           <code class="ruby">      elsif index % 4 == 0</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="48">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="29" data-linenumber="48">
+          <span class="hits">29</span>
           
           <code class="ruby">        shift(shift_hash[:A], letter)</code>
         </li>
       
-        <li class="covered" data-hits="62" data-linenumber="49">
-          <span class="hits">62</span>
+        <li class="covered" data-hits="78" data-linenumber="49">
+          <span class="hits">78</span>
           
           <code class="ruby">      elsif index % 4 == 1</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="50">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="29" data-linenumber="50">
+          <span class="hits">29</span>
           
           <code class="ruby">        shift(shift_hash[:B], letter)</code>
         </li>
       
-        <li class="covered" data-hits="39" data-linenumber="51">
-          <span class="hits">39</span>
+        <li class="covered" data-hits="49" data-linenumber="51">
+          <span class="hits">49</span>
           
           <code class="ruby">      elsif index % 4 == 2</code>
         </li>
       
-        <li class="covered" data-hits="23" data-linenumber="52">
-          <span class="hits">23</span>
+        <li class="covered" data-hits="29" data-linenumber="52">
+          <span class="hits">29</span>
           
           <code class="ruby">        shift(shift_hash[:C], letter)</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="53">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="20" data-linenumber="53">
+          <span class="hits">20</span>
           
           <code class="ruby">      elsif index % 4 == 3</code>
         </li>
       
-        <li class="covered" data-hits="16" data-linenumber="54">
-          <span class="hits">16</span>
+        <li class="covered" data-hits="20" data-linenumber="54">
+          <span class="hits">20</span>
           
           <code class="ruby">        shift(shift_hash[:D], letter)</code>
         </li>
@@ -430,8 +430,8 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="7" data-linenumber="56">
-          <span class="hits">7</span>
+        <li class="covered" data-hits="9" data-linenumber="56">
+          <span class="hits">9</span>
           
           <code class="ruby">    end.join</code>
         </li>
@@ -490,8 +490,8 @@
           <code class="ruby">  def decrypted_message(message, key = @key, offset = create_offset)</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="66">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="8" data-linenumber="66">
+          <span class="hits">8</span>
           
           <code class="ruby">    shift_hash = generate_shift_hash(key, offset)</code>
         </li>
@@ -508,62 +508,62 @@
           <code class="ruby">    message.chars.map.with_index do |letter, index|</code>
         </li>
       
-        <li class="covered" data-hits="82" data-linenumber="69">
-          <span class="hits">82</span>
+        <li class="covered" data-hits="106" data-linenumber="69">
+          <span class="hits">106</span>
           
           <code class="ruby">      if !@alphabet.include?(letter)</code>
         </li>
       
-        <li class="covered" data-hits="8" data-linenumber="70">
-          <span class="hits">8</span>
+        <li class="covered" data-hits="10" data-linenumber="70">
+          <span class="hits">10</span>
           
           <code class="ruby">        letter</code>
         </li>
       
-        <li class="covered" data-hits="74" data-linenumber="71">
-          <span class="hits">74</span>
+        <li class="covered" data-hits="96" data-linenumber="71">
+          <span class="hits">96</span>
           
           <code class="ruby">      elsif index % 4 == 0</code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="72">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="26" data-linenumber="72">
+          <span class="hits">26</span>
           
           <code class="ruby">        shift(-shift_hash[:A], letter)</code>
         </li>
       
-        <li class="covered" data-hits="54" data-linenumber="73">
-          <span class="hits">54</span>
+        <li class="covered" data-hits="70" data-linenumber="73">
+          <span class="hits">70</span>
           
           <code class="ruby">      elsif index % 4 == 1</code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="74">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="26" data-linenumber="74">
+          <span class="hits">26</span>
           
           <code class="ruby">        shift(-shift_hash[:B], letter)</code>
         </li>
       
-        <li class="covered" data-hits="34" data-linenumber="75">
-          <span class="hits">34</span>
+        <li class="covered" data-hits="44" data-linenumber="75">
+          <span class="hits">44</span>
           
           <code class="ruby">      elsif index % 4 == 2</code>
         </li>
       
-        <li class="covered" data-hits="20" data-linenumber="76">
-          <span class="hits">20</span>
+        <li class="covered" data-hits="26" data-linenumber="76">
+          <span class="hits">26</span>
           
           <code class="ruby">        shift(-shift_hash[:C], letter)</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="77">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="18" data-linenumber="77">
+          <span class="hits">18</span>
           
           <code class="ruby">      elsif index % 4 == 3</code>
         </li>
       
-        <li class="covered" data-hits="14" data-linenumber="78">
-          <span class="hits">14</span>
+        <li class="covered" data-hits="18" data-linenumber="78">
+          <span class="hits">18</span>
           
           <code class="ruby">        shift(-shift_hash[:D], letter)</code>
         </li>
@@ -574,8 +574,8 @@
           <code class="ruby">      end</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="80">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="8" data-linenumber="80">
+          <span class="hits">8</span>
           
           <code class="ruby">    end.join</code>
         </li>
@@ -598,14 +598,14 @@
           <code class="ruby">  def shift(rotate_by, letter)</code>
         </li>
       
-        <li class="covered" data-hits="159" data-linenumber="84">
-          <span class="hits">159</span>
+        <li class="covered" data-hits="203" data-linenumber="84">
+          <span class="hits">203</span>
           
           <code class="ruby">    rotated_alphabet = @alphabet.rotate(rotate_by)</code>
         </li>
       
-        <li class="covered" data-hits="159" data-linenumber="85">
-          <span class="hits">159</span>
+        <li class="covered" data-hits="203" data-linenumber="85">
+          <span class="hits">203</span>
           
           <code class="ruby">    rotated_alphabet[@alphabet.index(letter)] # before rotate h is at index 7, after rotate k is</code>
         </li>
@@ -803,8 +803,8 @@
           <code class="ruby">  def self.create_key</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="6">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="14" data-linenumber="6">
+          <span class="hits">14</span>
           
           <code class="ruby">    rand.to_s[2..6]</code>
         </li>
@@ -827,14 +827,14 @@
           <code class="ruby">  def self.create_offset(date = find_date)</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="10">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="23" data-linenumber="10">
+          <span class="hits">23</span>
           
           <code class="ruby">    date_squared = (date.to_i * date.to_i)</code>
         </li>
       
-        <li class="covered" data-hits="21" data-linenumber="11">
-          <span class="hits">21</span>
+        <li class="covered" data-hits="23" data-linenumber="11">
+          <span class="hits">23</span>
           
           <code class="ruby">    date_squared.to_s[-4..-1]</code>
         </li>
@@ -857,8 +857,8 @@
           <code class="ruby">  def self.find_date</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="15">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="14" data-linenumber="15">
+          <span class="hits">14</span>
           
           <code class="ruby">    date = Time.now.strftime(&quot;%d%m%y&quot;)</code>
         </li>
