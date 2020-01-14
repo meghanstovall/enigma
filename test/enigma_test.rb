@@ -26,10 +26,8 @@ class EnigmaTest < Minitest::Test
     assert_equal 5, @enigma.key.length
   end
 
-  def test_can_get_date
-    @enigma.stubs(:find_date).returns("131220")
-
-    assert_equal "131220", @enigma.date
+  def test_can_get_the_date
+    assert_equal "140120", @enigma.date
   end
 
   def test_can_create_offset
@@ -52,7 +50,7 @@ class EnigmaTest < Minitest::Test
     assert_equal ({a: 1, b: 0, c: 2, d: 5}), @enigma.generate_offset_hash("1025")
   end
 
-  def test_can_create_hash_with_shift_number
+  def test_can_create_hash_with_shift_numbers
     assert_instance_of Hash, @enigma.generate_shift_hash
     assert_equal 4, @enigma.generate_shift_hash.length
     assert_equal [:A, :B, :C, :D], @enigma.generate_shift_hash.keys
@@ -68,6 +66,7 @@ class EnigmaTest < Minitest::Test
 
   def test_can_decrypt_the_message
     assert_instance_of String, @enigma.decrypted_message("My name is Meghan")
+    assert_instance_of String, @enigma.decrypted_message("My name is Meghan", "02715")
     assert_equal "hello world!", @enigma.decrypted_message("keder ohulw!", "02715", "1025")
   end
 
@@ -80,6 +79,19 @@ class EnigmaTest < Minitest::Test
     message = encrypted[:encryption]
 
     assert_equal ({decryption: "hello world!", key: "02715", date: "040895"}), @enigma.decrypt(message, "02715", "040895")
+
+    encrypted = @enigma.encrypt("hello world!", "02715")
+    message = encrypted[:encryption]
+    date = encrypted[:date]
+
+    assert_equal ({decryption: "hello world!", key: "02715", date: date}), @enigma.decrypt(message, "02715")
+
+    encrypted = @enigma.encrypt("hello world!")
+    message = encrypted[:encryption]
+    date = encrypted[:date]
+    key = encrypted[:key]
+
+    assert_equal ({decryption: "hello world!", key: key, date: date}), @enigma.decrypt(message)
   end
 
   # def test_can_crack_a_message
