@@ -104,6 +104,15 @@ class EnigmaTest < Minitest::Test
     assert_equal ({decryption: "hello world!", key: key, date: date}), @enigma.decrypt(message)
   end
 
+  def test_can_shift_the_alphabet
+    assert_equal "f", @enigma.shift(5, "a")
+    assert_equal "a", @enigma.shift(-5, "f")
+    assert_equal "a", @enigma.shift(27, "a")
+    assert_equal "a", @enigma.shift(-27, "a")
+    assert_equal "d", @enigma.shift(15, "p")
+    assert_equal "p", @enigma.shift(-15, "d")
+  end
+
   # def test_can_crack_a_message
   #   expected = {encryption: "keder ohulwthnw", key: "02715", date: "040895"}
   #   assert_equal expected, @enigma.encrypt("hello world end", "02715", "040895")
