@@ -27,7 +27,7 @@ class EnigmaTest < Minitest::Test
   end
 
   def test_can_get_the_date
-    assert_equal "140120", @enigma.date
+    assert_equal "150120", @enigma.date
   end
 
   def test_can_create_offset
